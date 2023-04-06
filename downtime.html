@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Currently experiencing downtime - oofbomb's site</title>
+    <style>
+      /* You can add your custom styles here */
+      body {
+        font-family: Arial, sans-serif;
+      }
+      
+      #header {
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      #logo {
+        font-size: 24px;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+      
+      #links {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+      }
+      
+      #links a {
+        color: #fff;
+        text-decoration: none;
+        margin-left: 20px;
+      }
+      
+      #main {
+        text-align: center;
+        margin-top: 50px;
+      }
+      
+      #error-text {
+        font-size: 72px;
+        font-weight: bold;
+        color: red;
+        animation: glitch 1s linear infinite;
+      }
+      
+      @keyframes glitch {
+        0% {
+          transform: translate(0, 0);
+          text-shadow: none;
+        }
+        25% {
+          transform: translate(-5px, 5px);
+          text-shadow: -5px 5px 10px rgba(255, 255, 255, 0.5);
+        }
+        50% {
+          transform: translate(5px, -5px);
+          text-shadow: 5px -5px 10px rgba(255, 255, 255, 0.5);
+        }
+        75% {
+          transform: translate(5px, 5px);
+          text-shadow: 5px 5px 10px rgba(255, 255, 255, 0.5);
+        }
+        100% {
+          transform: translate(-5px, -5px);
+          text-shadow: -5px -5px 10px rgba(255, 255, 255, 0.5);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header">
+      <div id="logo">
+        oofbomb's site
+      </div>
+      <div id="links">
+        <a href="#">Admin Panel</a>
+      </div>
+    </div>
+    <div id="main">
+      <div id="error-text">
+        Currently experiencing downtime
+      </div>
+      <p>Sorry, we're currently experiencing some downtime with our servers. At this time all pages of astrosweb.tk are nonaccessible for the moment. Check back on our status page for updates.</p>
+    </div>
+  </body>
+</html>
