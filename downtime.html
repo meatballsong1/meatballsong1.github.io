@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Currently experiencing downtime - oofbomb's site</title>
+    <title>Currently Experiencing Downtime - oofbomb's site</title>
     <style>
       /* You can add your custom styles here */
       body {
         font-family: Arial, sans-serif;
+        background-color: #1C1C1C;
+        color: #fff;
       }
       
       #header {
@@ -15,12 +17,17 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        text-transform: none;
       }
       
       #logo {
         font-size: 24px;
         font-weight: bold;
-        text-transform: uppercase;
+        text-transform: none;
+      }
+
+      #logo img {
+        max-height: 50px;
       }
       
       #links {
@@ -43,30 +50,40 @@
       #error-text {
         font-size: 72px;
         font-weight: bold;
-        color: red;
+        color: #FFA500;
         animation: glitch 1s linear infinite;
+        -webkit-animation: glitch 1s linear infinite;
       }
       
+      #error-subtext {
+        font-size: 24px;
+        font-weight: bold;
+        color: #fff;
+        margin-top: 30px;
+        text-shadow: 0 0 10px #FFA500;
+      }
+
       @keyframes glitch {
-        0% {
-          transform: translate(0, 0);
-          text-shadow: none;
+        2%,64% {
+            transform: translate(2px,0) skew(0deg);
         }
-        25% {
-          transform: translate(-5px, 5px);
-          text-shadow: -5px 5px 10px rgba(255, 255, 255, 0.5);
+        4%,60% {
+            transform: translate(-2px,0) skew(0deg);
         }
-        50% {
-          transform: translate(5px, -5px);
-          text-shadow: 5px -5px 10px rgba(255, 255, 255, 0.5);
+        62% {
+            transform: translate(0,0) skew(5deg);  
         }
-        75% {
-          transform: translate(5px, 5px);
-          text-shadow: 5px 5px 10px rgba(255, 255, 255, 0.5);
+      }
+
+      @-webkit-keyframes glitch {
+        2%,64% {
+            transform: translate(2px,0) skew(0deg);
         }
-        100% {
-          transform: translate(-5px, -5px);
-          text-shadow: -5px -5px 10px rgba(255, 255, 255, 0.5);
+        4%,60% {
+            transform: translate(-2px,0) skew(0deg);
+        }
+        62% {
+            transform: translate(0,0) skew(5deg);  
         }
       }
     </style>
@@ -74,17 +91,20 @@
   <body>
     <div id="header">
       <div id="logo">
-        oofbomb's site
+        <img src="https://astrosweb.tk/wp-content/uploads/2023/04/unnamed.jpg" alt="oofbomb's site">
       </div>
       <div id="links">
-        <a href="#">Admin Panel</a>
+        <a href="https://my.astrosweb.tk">Cloudron</a>
+         <a href="https://git.astrosweb.tk">GitLab</a>
       </div>
     </div>
     <div id="main">
       <div id="error-text">
-        Currently experiencing downtime
+        Currently Experiencing Downtime
       </div>
-      <p>Sorry, we're currently experiencing some downtime with our servers. At this time all pages of astrosweb.tk are nonaccessible for the moment. Check back on our status page for updates.</p>
+      <div id="error-subtext">
+        Sorry, we're currently experiencing some downtime with our servers. At this time all pages of astrosweb.tk are nonaccessible for the moment. Check back on our status page for updates.
+      </div>
     </div>
   </body>
 </html>
