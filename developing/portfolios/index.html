@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>My Portfolio</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -31,9 +31,10 @@
             flex-wrap: wrap;
             justify-content: space-around;
             align-items: center;
+            animation: fadein 2s;
         }
         .project {
-            width: 300px;
+            width: calc(33.33% - 40px);
             margin: 20px;
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -56,9 +57,14 @@
             color: #fff;
             text-align: center;
             padding: 20px 0;
-            position: fixed;
-            bottom: 0;
             width: 100%;
+            animation: fadein 2s;
+        }
+
+        /* Fade in animation */
+        @keyframes fadein {
+            from { opacity: 0; }
+            to   { opacity: 1; }
         }
     </style>
 </head>
@@ -66,36 +72,54 @@
 
 <header>
     <h1>My Portfolio</h1>
-    <p>About Me: I'm a passionate web developer who loves creating beautiful and functional websites.</p>
+    <section id="about-me">
+        <h2>About Me</h2>
+        <img src="profile_picture.jpg" alt="Profile Picture" style="width: 150px; border-radius: 50%;">
+        <h3>Your Name</h3>
+        <p>Brief description about yourself goes here...</p>
+    </section>
 </header>
 
-<div class="container">
+<div class="container" id="projects">
+    <h2>My Projects</h2>
     <div class="project">
         <img src="project1.jpg" alt="Project 1">
         <div class="project-info">
-            <h2>Project 1</h2>
+            <h3>Project 1</h3>
             <p>Description of Project 1. This project involved building a responsive website for a local business using HTML, CSS, and JavaScript.</p>
         </div>
     </div>
     <div class="project">
         <img src="project2.jpg" alt="Project 2">
         <div class="project-info">
-            <h2>Project 2</h2>
+            <h3>Project 2</h3>
             <p>Description of Project 2. This project was an e-commerce platform built with React.js and Node.js.</p>
         </div>
     </div>
     <div class="project">
         <img src="project3.jpg" alt="Project 3">
         <div class="project-info">
-            <h2>Project 3</h2>
+            <h3>Project 3</h3>
             <p>Description of Project 3. This project was a mobile app developed for iOS and Android using Flutter.</p>
         </div>
     </div>
+    <!-- Add more projects here -->
 </div>
 
 <footer>
     <p>&copy; 2024 My Portfolio</p>
 </footer>
+
+<script>
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("about-me").style.animation = "fadein 2s";
+            document.getElementById("projects").style.animation = "fadein 2s";
+        }
+    }
+</script>
 
 </body>
 </html>
