@@ -10,7 +10,7 @@
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
-            color: #000; /* Changing text color to black */
+            color: #000;
         }
         header {
             background-color: #333;
@@ -49,10 +49,11 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 5px;
             overflow: hidden;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Added box-shadow transition */
         }
         .project:hover {
             transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Added box-shadow effect */
         }
         .project img {
             width: 100%;
@@ -68,6 +69,11 @@
             padding: 20px 0;
             width: 100%;
             animation: fadein 2s;
+        }
+        #projects h2 { /* Adjusted styling for "My Projects" heading */
+            margin-top: 0;
+            font-size: 1.5em; /* Increased font size */
+            text-align: center; /* Centered text */
         }
         /* About Me Section */
         #about-me {
@@ -95,7 +101,7 @@
         }
         /* Languages Section */
         #languages {
-            background-color: #fff;
+            background-color: #e0e0e0;
             padding: 20px;
             margin-top: 20px;
             border-radius: 5px;
@@ -106,7 +112,8 @@
             display: inline-block;
             margin: 5px;
             padding: 10px;
-            background-color: green; /* Changing language box color to green */
+            background-color: green;
+            color: #000;
             border-radius: 5px;
         }
         /* Fade in animation */
@@ -122,9 +129,9 @@
     <h1>My Portfolio</h1>
     <section id="about-me">
         <img src="profile_picture.png" alt="Profile Picture">
-        <h2 style="color: black;">oofbomb</h2> <!-- Changing name color to black -->
+        <h2 style="color: black;">oofbomb</h2>
         <section id="languages">
-            <h3>Languages I Know</h3>
+            <h3 style="color: black;">Languages I Know</h3>
             <div class="language-box">HTML (still Working on)</div>
             <div class="language-box">JavaScript</div>
             <div class="language-box">Lua</div>
@@ -141,7 +148,7 @@
 </section>
 
 <div class="project-container" id="projects">
-    <h2>My Projects</h2>
+    <h2 style="text-align: center; font-size: 1.5em;">My Projects</h2>
     <div class="project">
         <img src="announcement.png" alt="Project 1">
         <div class="project-info">
