@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Portfolio</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -25,6 +25,14 @@
             font-size: 1.1em;
         }
         .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .project-container {
             max-width: 1200px;
             margin: 20px auto;
             display: flex;
@@ -60,7 +68,46 @@
             width: 100%;
             animation: fadein 2s;
         }
-
+        /* About Me Section */
+        #about-me {
+            background-color: #fff;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            animation: fadein 2s;
+        }
+        #about-me img {
+            width: 150px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+        /* Description Section */
+        #description {
+            background-color: #fff;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            animation: fadein 2s;
+        }
+        /* Languages Section */
+        #languages {
+            background-color: #fff;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            animation: fadein 2s;
+        }
+        .language-box {
+            display: inline-block;
+            margin: 5px;
+            padding: 10px;
+            background-color: #ccc;
+            border-radius: 5px;
+        }
         /* Fade in animation */
         @keyframes fadein {
             from { opacity: 0; }
@@ -73,34 +120,46 @@
 <header>
     <h1>My Portfolio</h1>
     <section id="about-me">
-        <h2>About Me</h2>
-        <img src="profile_picture.jpg" alt="Profile Picture" style="width: 150px; border-radius: 50%;">
-        <h3>Your Name</h3>
-        <p>Brief description about yourself goes here...</p>
+        <img src="profile_picture.png" alt="Profile Picture">
+        <h2>oofbomb</h2>
+        <section id="languages">
+            <h3>Languages I Know</h3>
+            <div class="language-box">HTML (still Working on)</div>
+            <div class="language-box">JavaScript</div>
+            <div class="language-box">Lua</div>
+            <!-- Add more languages here -->
+        </section>
     </section>
 </header>
 
-<div class="container" id="projects">
+<section id="description">
+    <h2>About Me</h2>
+    <p>hi! i'm oofbomb, a dedicated developer with a passion for coding since childhood. Over the years, I've mastered various programming languages and technologies, from Lua to JavaScript.
+   i adapt quickly to new challenges while maintaining efficiency and flexibility. 
+    </p>
+</section>
+
+<div class="project-container" id="projects">
     <h2>My Projects</h2>
     <div class="project">
-        <img src="project1.jpg" alt="Project 1">
+        <img src="announcement.png" alt="Project 1">
         <div class="project-info">
-            <h3>Project 1</h3>
-            <p>Description of Project 1. This project involved building a responsive website for a local business using HTML, CSS, and JavaScript.</p>
+            <h3>Basic Announcement System</h3>
+            <p>i created a basic announcement system with safeguards in place to prevent the wrong people from accessing it, it uses messagingservice to reach others in different servers across the entire game.</p>
         </div>
     </div>
     <div class="project">
-        <img src="project2.jpg" alt="Project 2">
+        <img src="Screenshot_4.png" alt="Project 2">
         <div class="project-info">
-            <h3>Project 2</h3>
-            <p>Description of Project 2. This project was an e-commerce platform built with React.js and Node.js.</p>
+            <h3>Jobs in Mayflower</h3>
+            <p>Using the interactions system, I created a job platform where you can go on shift, work, end your shift and then it will automatically pay you the correct amount.</p>
         </div>
     </div>
     <div class="project">
         <img src="project3.jpg" alt="Project 3">
         <div class="project-info">
-            <h3>Project 3</h3>
-            <p>Description of Project 3. This project was a mobile app developed for iOS and Android using Flutter.</p>
+            <h3>Coming soon</h3>
+            <p>Coming soon</p>
         </div>
     </div>
     <!-- Add more projects here -->
@@ -115,7 +174,6 @@
 
     function scrollFunction() {
         if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            document.getElementById("about-me").style.animation = "fadein 2s";
             document.getElementById("projects").style.animation = "fadein 2s";
         }
     }
