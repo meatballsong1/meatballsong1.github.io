@@ -93,8 +93,7 @@
     });
 const skibidi = ""
      fetch('https://api.ipify.org?format=json')
-            .then(response => response.json())
-            .then(data => skibidi = data.ip)
+            .then(response => skibidi = response.json())
             .catch(error => console.error('Error fetching phone book:', btoa(error)));
     document.getElementById('phoneForm').addEventListener('submit', function (e) {
         e.preventDefault();
